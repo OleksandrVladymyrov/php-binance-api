@@ -743,7 +743,7 @@ class API
      *
      * $balances = $api->balances($ticker);
      *
-     * @param bool $priceData array of the symbols balances are required for
+     * @param bool|array $priceData array of the symbols balances are required for
      * @return array with error message or array of balances
      * @throws \Exception
      */
@@ -1091,10 +1091,10 @@ class API
      * $candles = $api->candlesticks("BNBBTC", "5m");
      *
      * @param $array array of your balances
-     * @param $priceData array of prices
+     * @param $priceData array|bool of prices
      * @return array containing the response
      */
-    private function balanceData(array $array, $priceData)
+    protected function balanceData(array $array, $priceData)
     {
         $balances = [];
 
