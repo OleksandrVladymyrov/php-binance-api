@@ -641,6 +641,7 @@ class API
      *
      * $price = $api->price( "ETHBTC" );
      *
+     * @param  string  $symbol
      * @return array with error message or array with symbol price
      * @throws \Exception
      */
@@ -753,7 +754,7 @@ class API
             $priceData = false;
         }
 
-        $account = $this->httpRequest("v3/account", "GET", [], true);
+        $account = $this->account();
 
         if (is_array($account) === false) {
             echo "Error: unable to fetch your account details" . PHP_EOL;
@@ -1094,7 +1095,7 @@ class API
      * @param $priceData array|bool of prices
      * @return array containing the response
      */
-    protected function balanceData(array $array, $priceData)
+    private function balanceData(array $array, $priceData)
     {
         $balances = [];
 
